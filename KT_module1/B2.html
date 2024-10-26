@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  function lamTronDiem(diemHS) {
+    if (diemHS < 48) {
+      return diemHS
+    }
+
+    let boiSoTiepTheo = Math.ceil(diemHS / 5) * 5
+
+    let khoangCach = boiSoTiepTheo - diemHS
+
+    if (khoangCach < 3) {
+      return boiSoTiepTheo; // Làm tròn lên bội số tiếp theo của 5
+    } else {
+      return diemHS // Không làm tròn
+    }
+  }
+
+  function nhapDiemVaLamTron() {
+    let diemInput = prompt("Nhập điểm của học sinh (0-100):")
+    let diemHS = parseInt(diemInput)
+
+    let trangThai = " hợp lệ"
+
+    switch (true) {
+      case isNaN(diemHS):
+        trangThai = " không hợp lệ! (Không phải là số)"
+        break;
+      case diemHS < 0:
+      case diemHS > 100:
+        trangThai = " không hợp lệ! (Ngoài khoảng 0 đến 100)"
+        break;
+      default:
+        trangThai = " hợp lệ"
+        break
+    }
+
+    if (trangThai !== " hợp lệ") {
+      console.log(`Điểm${trangThai} Vui lòng nhập điểm trong khoảng từ 0 đến 100.`)
+      return;
+    }
+
+    let ketQua = lamTronDiem(diemHS)
+    console.log(`Điểm đã nhập: ${diemHS}`)
+    console.log(`Kết quả sau khi làm tròn: ${ketQua}`)
+
+
+    if (ketQua >= 50) {
+      console.log("Học sinh đã qua môn.")
+    } else {
+      console.log("Học sinh đã trượt.")
+    }
+  }
+
+  // Gọi hàm chính
+  nhapDiemVaLamTron();
+
+
+
+
+</script>
+
+</body>
+</html>

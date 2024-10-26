@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<script>
+
+    function boiChungChiaCho3va5(arr){
+        let boiChung = arr.filter(num => num % 3 === 0 && num % 5 === 0)
+        let tongBoiChung=boiChung.reduce((acc, num ) => acc + num, 0)
+        return {boiChung,tongBoiChung}
+    }
+
+    let soNguyenTo= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    let ketQua=boiChungChiaCho3va5(soNguyenTo)
+
+    console.log("Các số chia hết cho 3 và 5 là: ", ketQua.boiChung + "<br>")
+    console.log("tổng của các s bội chung chia hết cho 3 và 5 là: ", ketQua.tongBoiChung)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý Cặp Số</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 5px;
+      width: 100px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: green;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkgreen;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="color: green">Đếm Cặp Số Có Tổng Chia Hết Cho K</h1>
+
+<div>
+  <label for="size">Nhập số lượng phần tử của mảng (n <= 50):</label>
+  <input type="number" id="size" min="1" max="50">
+
+  <div id="arrayInputs"></div>
+
+  <label for="k">Nhập số nguyên dương k:</label>
+  <input type="number" id="k" min="1">
+  <br><br>
+
+  <button id="calculate">Tính số cặp</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+  document.getElementById('size').addEventListener('input', function() {
+    const n = parseInt(this.value);
+    const arrayInputsDiv = document.getElementById('arrayInputs')
+    arrayInputsDiv.innerHTML = '';
+
+    for (let i = 0; i < n; i++) {
+      const input = document.createElement('input')
+      input.type = 'number'
+      input.placeholder = `Nhập phần tử thứ ${i + 1}`
+      arrayInputsDiv.appendChild(input)
+    }
+  })
+
+  function demCapTongChiaHet(arr, k) {
+    let count = 0
+
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        const tong = arr[i] + arr[j];
+        if (tong % k === 0) {
+          count++
+        }
+      }
+    }
+
+    return count
+  }
+
+  document.getElementById('calculate').addEventListener('click', function() {
+    const n = parseInt(document.getElementById('size').value)
+    const k = parseInt(document.getElementById('k').value)
+
+    if (n <= 0 || n > 50) {
+      alert("Số lượng phần tử không hợp lệ! Vui lòng nhập n từ 1 đến 50.")
+      return
+    }
+
+    const arr = []
+    const inputs = document.querySelectorAll('#arrayInputs input')
+
+    inputs.forEach(input => {
+      const value = parseInt(input.value)
+      if (!isNaN(value)) {
+        arr.push(value)
+      }
+    })
+
+    if (k <= 0) {
+      alert("k phải là số nguyên dương!")
+      return
+    }
+
+    const soCap = demCapTongChiaHet(arr, k)
+    document.getElementById('result').textContent = `Số cặp có tổng chia hết cho ${k} là: ${soCap}`
+  })
+</script>
+
+</body>
+</html>

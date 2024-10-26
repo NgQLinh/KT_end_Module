@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý Khách Hàng</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      height: 50px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f4f4f4;
+    }
+
+    button {
+      background-color: green;
+      color: white;
+      height: 30px;
+      border: none;
+      border-radius: 5%;
+    }
+
+    #add {
+      margin: 10px 0;
+    }
+
+    input {
+      width: 293px;
+      height: 35px;
+      margin-top: 5px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="background-color: green; color: white; text-align: center;"> ----- Quản lý Khách Hàng ----- </h1>
+
+<div style="padding: 15px;">
+  <input type="text" id="customerId" placeholder="Mã khách hàng">
+  <input type="text" id="customerName" placeholder="Tên khách hàng">
+  <input type="text" id="customerPhone" placeholder="Số điện thoại">
+  <input type="text" id="customerAddress" placeholder="Địa chỉ">
+  <input type="email" id="customerEmail" placeholder="Email">
+
+  <br><br>
+
+  <div>
+    <button id="add">Thêm khách hàng</button>
+  </div>
+
+  <p id="alertProcess"></p>
+</div>
+
+<table>
+  <thead>
+  <tr style="background-color: green; color: white">
+    <th>Mã khách hàng</th>
+    <th>Tên khách hàng</th>
+    <th>Số điện thoại</th>
+    <th>Địa chỉ</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+  <tbody id="customerContainer"></tbody>
+</table>
+
+<script src="Customer.js"></script>
+
+</body>
+</html>
